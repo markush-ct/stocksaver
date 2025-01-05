@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        Gate::authorize("viewAny", Category::class);
+
+        return inertia("Dashboard/Categories/Index");
     }
 
     /**
@@ -23,7 +25,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize("create", Category::class);
+
+        return inertia("Dashboard/Categories/Create");
     }
 
     /**
