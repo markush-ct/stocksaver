@@ -5,6 +5,18 @@ use App\Models\User;
 use App\RolesEnum;
 use Database\Seeders\RoleAndPermissionSeeder;
 
+test('categories page can be rendered', function () {
+    $user = createUserWithRole(RolesEnum::ADMIN);
+
+    $response = $this
+        ->actingAs($user)
+        ->get(route('category.index'));
+
+    $response
+        ->assertOk()
+        ->assertSee('Categories');
+});
+
 test('admin can create a product category', function () {
     $user = createUserWithRole(RolesEnum::ADMIN);
 
@@ -70,6 +82,16 @@ test('admin can delete a product category', function () {
         ->assertSessionHas("success", "You have successfully deleted a category.");
 
     $this->assertDatabaseEmpty('categories');
+});
+
+test('prevent user with manager role to access category page', function () {
+    $user = createUserWithRole(RolesEnum::MANAGER);
+
+    $response = $this
+        ->actingAs($user)
+        ->get(route('category.index'));
+
+    $response->assertForbidden();
 });
 
 test('prevent user with manager role to create product category', function () {
