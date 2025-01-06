@@ -1,4 +1,4 @@
-import { Home, List } from 'lucide-react';
+import { Gauge, List } from 'lucide-react';
 
 import {
     Sidebar,
@@ -25,12 +25,12 @@ export function AppSidebar() {
     // Menu items.
     const links = [
         {
-            title: 'Home',
+            title: 'Dashboard',
             route: 'dashboard',
-            icon: Home,
+            icon: Gauge,
         },
         {
-            title: 'Category',
+            title: 'Categories',
             route: 'category.index',
             icon: List,
         },
