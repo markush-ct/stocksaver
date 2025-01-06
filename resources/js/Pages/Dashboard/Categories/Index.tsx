@@ -9,6 +9,8 @@ import { DataTable } from '@/components/ui/data-table';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import { Head } from '@inertiajs/react';
 import { CategoryColumnsTable } from './Partials/category-columns-table';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 
 export default function IndexPage() {
     const data = [
@@ -34,11 +36,17 @@ export default function IndexPage() {
             <Head title="Categories" />
 
             <Card>
-                <CardHeader>
-                    <CardTitle>Categories</CardTitle>
-                    <CardDescription>
-                        Here's a list of categories.
-                    </CardDescription>
+                <CardHeader className="flex flex-row items-end justify-between">
+                    <div className="space-y-1.5">
+                        <CardTitle>Categories</CardTitle>
+                        <CardDescription>
+                            Here's a list of categories.
+                        </CardDescription>
+                    </div>
+                    <Button size="sm">
+                        <Plus />
+                        Create
+                    </Button>
                 </CardHeader>
                 <CardContent>
                     <DataTable
